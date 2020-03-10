@@ -3,24 +3,64 @@
 
 {% block content %}
 		<br>
+<div class="container">
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5 align="middle">Create New Product</h5>
+		</div>
+		<div class="card card-body">
+			<form method="POST">
 
+				<div class="form-group form-row">
+					<div class="col">
+						{% csrf_token %}
+				{{form.name.label}}
+				{{ form.name}}
+					</div>
+				<div class="form-group col">
+				{{form.category.label}}
+				{{ form.category}}
+					</div>
+					<div class="form-group col">
+				{{form.price.label}}
+				{{ form.price}}
+					</div>
+					<div>
+						{{form.description.label}}
+						{{form.description}}
+					</div>
+
+				</div>
+
+                 <div class="row justify-content-center text-center" >
+				<input  class="btn btn-bg btn-success d-flex justify-content-center" type="submit" value="Save"/>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+	</div>
+        <br>
 		<div class="row">
 			<div class="col-md">
 				<div class="card card-body">
-					<h5>Products</h5>
+					<h5 align="middle">Products</h5>
 				</div>
 				<div class="card card-body">
 					<table class="table">
 						<tr>
+							<th>ID</th>
 							<th>Product</th>
 							<th>Category</th>
 							<th>Price</th>
 						</tr>
         {% for i in products %}
 						<tr>
-						<td>{{i.name}}</td>
-						<td>{{i.category}}</td>
-						<td>{{i.price}}</td>
+						<td>{{i.id}}</td>
+						<td >{{i.name}}</td>
+						<td >{{i.category}}</td>
+						<td >{{i.price}}</td>
 
 						</tr>
 

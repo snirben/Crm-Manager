@@ -1,6 +1,5 @@
 {% extends 'accounts/main.html' %}
-
-
+{% load static %}
 {% block content %}
 
 {% include 'accounts/status.html' %}
@@ -14,7 +13,7 @@
 		<hr>
 		<div class="card card-body">
 			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
-			<table class="table table-sm">
+			<table id="example" class="table table-sm">
 				<tr>
 					<th></th>
 					<th>Customer</th>
@@ -35,9 +34,10 @@
 		<h5>LAST 5 ORDERS</h5>
 		<hr>
 		<div class="card card-body">
-			<table class="table table-sm">
+			<table  class="table table-sm table-striped table-bordered mytable">
 				<tr>
-					<th>Product</th>
+					<th>Number</th>
+					<th>Customer</th>
 					<th>Date Orderd</th>
 					<th>Status</th>
 					<th>Update</th>
@@ -45,9 +45,9 @@
 				</tr>
   {% for order in orders %}
 				<tr>
-					<td>{{order.product}}</td>
-					<td>{{order.date_created}}</td>
-					<td>{{order.status}}</td>
+					<td>{{order.id}}</td>
+					<td>{{order.customer}}</td>
+					<td>{{order.date_createdview}}</td>
 					<td>{{order.status}}</td>
 					<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
 					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Remove</a></td>
@@ -58,6 +58,7 @@
 	</div>
 
 </div>
+
 
 
 
