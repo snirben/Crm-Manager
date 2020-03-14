@@ -9,9 +9,15 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('products/', views.products, name="product"),
     path('create_products/', views.product_create_view, name="productcreate"),
-    path('addtocart/', views.add_to_order, name="addtoorder"),
+
+
+
+    path('customer/', views.indexView),
+    path('post/ajax/customer', views.postCustomer, name = "post_customer"),
+    path('get/ajax/validate/name', views.checkCustomerName, name="validate_name"),
     path('customer/<str:pk>/', views.customer, name="customer"),
 
+    path('post/ajax/task/<int:id>', views.postTask, name = "post_task"),
     path('create_order/<str:pk>', views.createOrder, name="create_order"),
     path('update_order/<str:pk>/', views.UpdateOrder, name="update_order"),
     path('delete_order/<str:pk>/', views.deleteOrder, name="delete_order")

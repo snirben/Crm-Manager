@@ -1,12 +1,15 @@
 from django.contrib import messages
+from django.core import serializers
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.forms import inlineformset_factory, modelformset_factory
 from django.contrib.auth.forms import UserCreationForm
-from .models import *
-from .forms import OrderForm, CreateUserForm, ProductForm
-from django.contrib.auth.decorators import login_required
+from django.views import View
 
+from .models import *
+from .forms import OrderForm, CreateUserForm, ProductForm, OrderItemForm, CustomerForm,TaskForm
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -90,14 +93,81 @@ def customer(request, pk):
     return render(request, 'accounts/customer.html', context)
 
 
+def indexView(request):
+    form = CustomerForm()
+    customer = Customer.objects.all()
+    return render(request, "accounts/customer.html", {"form": form, "customer": customer})
+
+
+def postCustomer(request):
+    # request should be ajax and method should be POST.
+    if request.is_ajax and request.method == "POST":
+        # get the form data
+        form = CustomerForm(request.POST)
+        # save the data and after fetch the object in instance
+        if form.is_valid():
+            instance = form.save()
+            # serialize in new friend object in json
+            ser_instance = serializers.serialize('json', [instance, ])
+            # send to client side.
+            return JsonResponse({"instance": ser_instance}, status=200)
+        else:
+            # some form errors occured.
+            return JsonResponse({"error": form.errors}, status=400)
+
+    # some error occured
+    return JsonResponse({"error": ""}, status=400)
+
+
+def checkCustomerName(request):
+    # request should be ajax and method should be GET.
+    if request.is_ajax and request.method == "GET":
+        # get the nick name from the client side.
+        name = request.GET.get("name", None)
+        # check for the nick name in the database.
+        if Customer.objects.filter(name=name).exists():
+            # if nick_name found return not valid new friend
+            return JsonResponse({"valid": False}, status=200)
+        else:
+            # if nick_name not found, then user can create a new friend.
+            return JsonResponse({"valid": True}, status=200)
+
+    return JsonResponse({}, status=400)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @login_required(login_url="login")
 def createOrder(request, pk):
     customer = Customer.objects.get(id=pk)
-    neworder=Order(customer=customer,status="New")
-    neworder.save()
-    formset1 = modelformset_factory(OrderItem,fields=("quantity","product",), extra=1)
-    formset = formset1(queryset=OrderItem.objects.none(),)
-    context = {'formset':  formset,'products':products}
+    order = Order(customer=customer, status="New")
+    order.save()
+    formset = OrderItemForm(initial={'order': order})
+    form = TaskForm(initial={'order': order})
+    task = OrderTask.objects.filter(order=order)
+    if request.method == 'POST':
+        formset = OrderItemForm(request.POST)
+        if formset.is_valid():
+            formset.save()
+
+    context = {'formset': formset, 'order': order, 'customer': customer,"form": form, "task": task}
     return render(request, 'accounts/order_form.html', context)
 
 
@@ -120,16 +190,22 @@ def deleteOrder(request, pk):
     return render(request, 'accounts/delete.html', context)
 
 
-def item_list(request):
-    context = {
-        ''
-    }
-    return render(request, "item_list".html, context)
+def postTask(request,id):
+    # request should be ajax and method should be POST.
+    if request.method == "POST":
+        # get the form data
+        form = TaskForm(request.POST)
+        # save the data and after fetch the object in instance
+        if form.is_valid():
+            order = get_object_or_404(Order, id=id)
+            instance = form.save(commit=False)
+            instance.order=order
+            instance.save()
+            # serialize in new friend object in json
+            ser_instance = serializers.serialize('json', [instance, ])
+            # send to client side.
+            return JsonResponse({"instance": ser_instance}, status=200)
+        else:
+            # some form errors occured.
+            return JsonResponse({"error": form.errors}, status=400)
 
-
-def add_to_order(request):
-    item = get_object_or_404(products)
-    order_item = OrderItem.objects.create(item=item)
-    order = Order.objects.create(user=request.user)
-    order.items.add(order_item)
-    return redirect(request, '')
