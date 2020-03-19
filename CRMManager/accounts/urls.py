@@ -10,15 +10,24 @@ urlpatterns = [
     path('products/', views.products, name="product"),
     path('create_products/', views.product_create_view, name="productcreate"),
 
-
-
+    ###customer###
     path('customer/', views.indexView),
-    path('post/ajax/customer', views.postCustomer, name = "post_customer"),
+    path('post/ajax/customer', views.postCustomer, name="post_customer"),
     path('get/ajax/validate/name', views.checkCustomerName, name="validate_name"),
     path('customer/<str:pk>/', views.customer, name="customer"),
 
-    path('post/ajax/task/<int:id>', views.postTask, name = "post_task"),
+    ###Order##
     path('create_order/<str:pk>', views.createOrder, name="create_order"),
     path('update_order/<str:pk>/', views.UpdateOrder, name="update_order"),
-    path('delete_order/<str:pk>/', views.deleteOrder, name="delete_order")
+    path('delete_order/<str:pk>/', views.deleteOrder, name="delete_order"),
+    path('post/ajax/order/', views.postOrder, name="post_order"),
+
+    ##Tasks##
+    path('post/ajax/task/<int:id>', views.postTask, name="post_task"),
+
+    ##services##
+    path('post/ajax/service/<int:id>', views.postService, name="post_service"),
+
+    #file
+    path('post/ajax/file/<int:id>', views.postFile, name="post_file"),
 ]

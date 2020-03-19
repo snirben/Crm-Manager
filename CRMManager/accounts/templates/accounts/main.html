@@ -29,6 +29,35 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 {% block javascript %}
 <script>
+
+  $("#id_date_finish").change(function () {
+      var serializedData = $(this).serialize();
+      var myform = document.getElementById("myform");
+      var fd = new FormData(myform);
+       $.ajax({
+        url : "{% url 'post_order' %}", // the endpoint
+        type : "POST", // http method
+        data : { date : $('#id_date_finish').val() , // data sent with the post request
+                 id: '{{order.id}}',
+                 csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val(),
+        serializedData,},
+
+
+        // handle a successful response
+        success : function(json) {
+            console.log(json); // log the returned json to the console
+            console.log("success"); // another sanity check
+        },
+
+        // handle a non-successful response
+        error : function(xhr,errmsg,err) {
+
+        }
+    });
+
+
+  })
+
     /*
         On submiting the form, send the POST ajax
         request to server and after successfull submission
@@ -74,7 +103,7 @@
 
 
 
-       $("#task-form").submit(function (e) {
+    $("#task-form").submit(function (e) {
         // preventing from page reload and default actions
 
         e.preventDefault();
@@ -99,7 +128,7 @@
                 var fields = instance[0]["fields"];
                 $("#my_tasks tbody").prepend(
                     `<tr>
-                    <td>${fields["task"]||""}</td>
+                    <td >${fields["task"]||""}</td>
                     </tr>`
                 )
             },
@@ -110,6 +139,74 @@
             }
         })
     })
+
+
+     $("#service-form").submit(function (e) {
+        // preventing from page reload and default actions
+        e.preventDefault();
+        // serialize the data for sending the form data.
+        var serializedData = $(this).serialize();
+        // make POST ajax call
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'post_service' order.id %}",
+            data: serializedData,
+            success: function (response) {
+                // on successfull creating object
+                // 1. clear the form.
+                $("#service-form").trigger('reset');
+                // 2. focus to nickname input
+                $("#id_name").focus();
+
+                // display the newly friend to table.
+                var instance = JSON.parse(response["instance"]);
+                var fields = instance[0]["fields"];
+                $("#my_services tbody").append(
+                    `<tr>
+                    <td contenteditable="true">${fields["service"]||""}</td>
+                    <td contenteditable="true">${fields["quantity"]||""}</td>
+                    <td contenteditable="true">${fields["price"]||""} ₪</td>
+                     <td><input type="submit" class="btn btn-danger justify-content-center text-center" value="מחק"  /></td>
+                    </tr>`
+                )
+            },
+            error: function (response) {
+                // alert the error if any error occured
+                alert(response["responseJSON"]["error"]);
+            }
+        })
+    })
+
+
+      $("#file-form").submit(function (e) {
+        var data = new FormData($('#file-form').get(0));
+        data.append('id_file',$("#id_file").files[0]);
+        // preventing from page reload and default actions
+        e.preventDefault();
+        // serialize the data for sending the form data.
+        // make POST ajax call
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'post_file' order.id %}",
+            data: {'data' : data},
+            success: function (response) {
+                // on successfull creating object
+                // 1. clear the form.
+                $("#file-form").trigger('reset');
+                // 2. focus to nickname input
+                // splay the newly friend to table.
+                var instance = JSON.parse(response["instance"]);
+                var fields = instance[0]["fields"];
+
+            },
+            error: function (response) {
+                // alert the error if any error occured
+                alert(response["responseJSON"]["error"]);
+            }
+        })
+    })
+
+
     /*
     On focus out on input nickname,
     call AJAX get request to check if the nickName
@@ -141,6 +238,7 @@
     })
 
       */
+
 </script>
 {% endblock javascript %}
 </html>

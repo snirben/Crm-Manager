@@ -1,0 +1,14 @@
+.page-content{
+    box-sizing: border-box;
+}
+
+div{
+    display: block;
+}
+
+#about-me{
+    background-image: url('mainimage.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}

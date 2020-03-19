@@ -1,13 +1,17 @@
+import datetime
+from django.utils.dateparse import parse_datetime
 from django.contrib import messages
 from django.core import serializers
 from django.shortcuts import render, redirect, get_object_or_404
+import dateutil.parser
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.forms import inlineformset_factory, modelformset_factory
 from django.contrib.auth.forms import UserCreationForm
 from django.views import View
 
 from .models import *
-from .forms import OrderForm, CreateUserForm, ProductForm, OrderItemForm, CustomerForm,TaskForm
+from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
@@ -65,12 +69,13 @@ def logoutUser(request):
 @login_required(login_url="login")
 def home(request):
     orders = Order.objects.all()
+    order = Order.objects.all()
     customers = Customer.objects.all()
     total_customers = customers.count()
     total_orders = orders.count()
     new = orders.filter(status='New').count()
     pending = orders.filter(status='Pending').count()
-    context = {'orders': orders, 'customers': customers, 'pending': pending, 'new': new, }
+    context = {'orders': orders, 'customers': customers, 'pending': pending, 'new': new, 'order': order}
     return render(request, 'accounts/dashborad.html', context)
 
 
@@ -135,39 +140,28 @@ def checkCustomerName(request):
     return JsonResponse({}, status=400)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @login_required(login_url="login")
 def createOrder(request, pk):
+    # order
     customer = Customer.objects.get(id=pk)
     order = Order(customer=customer, status="New")
     order.save()
-    formset = OrderItemForm(initial={'order': order})
+
+    orderform = OrderForm(instance=order)
+
+    ##Task
     form = TaskForm(initial={'order': order})
     task = OrderTask.objects.filter(order=order)
-    if request.method == 'POST':
-        formset = OrderItemForm(request.POST)
-        if formset.is_valid():
-            formset.save()
 
-    context = {'formset': formset, 'order': order, 'customer': customer,"form": form, "task": task}
+    ##Services
+    formservice = ServiceForm()
+    service = ServiceItem.objects.filter(order=order)
+    #files
+    formfile=OrderFileForm()
+    file=OrderFile.objects.filter(order=order)
+    # render
+    context = {'order': order, 'customer': customer, "form": form,
+               "task": task, 'formservice': formservice, 'service': service, 'orderform': orderform,'formfile':formfile,'file':file}
     return render(request, 'accounts/order_form.html', context)
 
 
@@ -190,7 +184,24 @@ def deleteOrder(request, pk):
     return render(request, 'accounts/delete.html', context)
 
 
-def postTask(request,id):
+def postOrder(request):
+
+    temp=request.POST.get('date')
+    date = dateutil.parser.parse(temp)
+    id = request.POST.get('id')
+    # request should be ajax and method should be POST.
+    order = get_object_or_404(Order, id=id)
+    form = OrderForm(instance=order)
+    instance = form.save(commit=False)
+    instance.date_finish = date
+    instance.save()
+
+    ser_instance = serializers.serialize('json', [instance, ])
+    # send to client side.
+    return JsonResponse({"instance": ser_instance}, status=200)
+
+
+def postTask(request, id):
     # request should be ajax and method should be POST.
     if request.method == "POST":
         # get the form data
@@ -199,7 +210,7 @@ def postTask(request,id):
         if form.is_valid():
             order = get_object_or_404(Order, id=id)
             instance = form.save(commit=False)
-            instance.order=order
+            instance.order = order
             instance.save()
             # serialize in new friend object in json
             ser_instance = serializers.serialize('json', [instance, ])
@@ -209,3 +220,50 @@ def postTask(request,id):
             # some form errors occured.
             return JsonResponse({"error": form.errors}, status=400)
 
+
+
+def postFile(request, id):
+    # request should be ajax and method should be POST.
+    temp=request.POST.get('data')
+    print(temp)
+    if request.method == "POST":
+        # get the form data
+        form = OrderFileForm(request.POST)
+        print(form)
+        # save the data and after fetch the object in instance
+        if form.is_valid():
+            order = get_object_or_404(Order, id=id)
+            instance = form.save(commit=False)
+            instance.order = order
+            instance.save()
+            # serialize in new friend object in json
+            ser_instance = serializers.serialize('json', [instance, ])
+            # send to client side.
+            return JsonResponse({"instance": ser_instance}, status=200)
+        else:
+            # some form errors occured.
+            return JsonResponse({"error": form.errors}, status=400)
+
+
+
+
+
+
+def postService(request, id):
+    # request should be ajax and method should be POST.
+    if request.method == "POST":
+        # get the form data
+        form = ServiceForm(request.POST)
+        # save the data and after fetch the object in instance
+        if form.is_valid():
+            order = get_object_or_404(Order, id=id)
+            instance = form.save(commit=False)
+            instance.order = order
+            instance.save()
+            # serialize in new friend object in json
+            ser_instance = serializers.serialize('json', [instance, ])
+            # send to client side.
+            return JsonResponse({"instance": ser_instance}, status=200)
+        else:
+            # some form errors occured.
+            return JsonResponse({"error": form.errors}, status=400)

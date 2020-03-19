@@ -23,15 +23,39 @@ class ProductForm(ModelForm):
         model = Product
         fields = '__all__'
 
-class OrderItemForm(ModelForm):
+class ServiceForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ServiceForm, self).__init__(*args, **kwargs)
+        for service in self.fields.keys():
+            self.fields[service].widget.attrs.update({
+                'class': 'form-control',
+            })
+        self.fields['order'].required = False
     class Meta:
-        model = OrderItem
-        fields = ['quantity','product','order']
+        model= ServiceItem
+        fields = '__all__'
+
+class DateInput(forms.DateInput):
+    input_type= 'date'
+
 
 class OrderForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(OrderForm, self).__init__(*args, **kwargs)
+        self.fields['date_finish'].required = False
+        self.fields['status'].required = False
+        self.fields['desc'].required = False
+
     class Meta:
         model = Order
         fields = '__all__'
+        widgets = {'date_finish': DateInput(),}
+
+
+
+
+
+
 class TaskForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(TaskForm, self).__init__(*args, **kwargs)
@@ -48,3 +72,9 @@ class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
+
+class OrderFileForm(ModelForm):
+    class Meta:
+        model=OrderFile
+        fields='__all__'

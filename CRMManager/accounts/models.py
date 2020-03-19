@@ -30,7 +30,6 @@ class Product(models.Model):
 
     )
     name = models.CharField(verbose_name='שם', max_length=200, null=True)
-    price = models.FloatField(verbose_name='מחיר', null=True)
     category = models.CharField(max_length=200, null=True, choices=CATEGORY, verbose_name='קטגוריה')
     description = models.CharField(max_length=200, null=True, verbose_name='מלל חופשי')
     date_created = models.DateTimeField(auto_now_add=True)
@@ -47,9 +46,9 @@ class Order(models.Model):
     )
     customer = models.ForeignKey(Customer, null=True, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
-    date_finish = models.DateTimeField(null=True, verbose_name='תאריך סיום')
+    date_finish = models.DateField(null=True, verbose_name='תאריך סיום' ,blank=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS, verbose_name='סטאטוס')
-    desc = models.TextField(max_length=255, null=True, verbose_name='פרטים')
+    desc = models.TextField(max_length=255, null=True, verbose_name='פרטים',blank=True)
 
     def date_createdview(self):
         return self.date_created.strftime('%d/%m/%Y')
@@ -58,10 +57,11 @@ class Order(models.Model):
         return str(self.id)
 
 
-class OrderItem(models.Model):
-    product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, null=True, on_delete=models.CASCADE)
-    quantity = models.IntegerField(null=True)
+class ServiceItem(models.Model):
+    service = models.CharField(max_length=255,null=True,verbose_name='שרות')
+    order = models.ForeignKey(Order, null=True, on_delete=models.CASCADE,verbose_name='הזמנה')
+    quantity = models.IntegerField(null=True,verbose_name='כמות')
+    price = models.FloatField(verbose_name='מחיר', null=True)
 
 
 # def __str__(self):
@@ -69,4 +69,9 @@ class OrderItem(models.Model):
 
 class OrderTask(models.Model):
     order = models.ForeignKey(Order, null=True, on_delete=models.CASCADE)
+    completed = models.BooleanField(default=False)
     task = models.CharField(max_length=200, null=True, verbose_name='משימה')
+
+class OrderFile(models.Model):
+    order=models.ForeignKey(Order, null=True, on_delete=models.CASCADE)
+    file= models.FileField(upload_to='static/files/')
