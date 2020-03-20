@@ -7,8 +7,47 @@ div{
 }
 
 #about-me{
-    background-image: url('mainimage.png');
+    background-image: url('mainimage.jpg');
+
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 50px;
 
+}
+.myimage{
+    /*position: fixed;*/
+    box-sizing: border-box;
+    margin-top: 60px;
+    max-width: 100%;
+    max-height: 130%;
+    position: absolute;
+
+}
+
+#profile {
+    border: 10px solid white;
+    box-shadow: 0 12px 90px -10px rgba(139, 139, 139, .5) !important;
+
+
+}
+#name {
+    font-size: 50px;
+    color: #ffd93e;
+    letter-spacing: -2px;
+    font-weight: 600;
+    margin-top: 60px!important;
+    margin-bottom: 10px!important;
+    font-family: Open Sans, sans-serif;
+}
+
+#curjob{
+    font-family: Open Sans, sans-serif;
+    font-size: 21px;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+#curjobdiv{
+    margin-bottom: 30px;
 }

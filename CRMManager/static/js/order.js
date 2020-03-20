@@ -1,35 +1,3 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>CRM</title>
-
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
-      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    </head>
-
-<body>
-{% include 'accounts/navbar.html' %}
-
-
-
-
-{% block content %}
-
-{% endblock %}
-
-<hr>
-
-<h5>our footer</h5>
-</body>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-<script >
 
 
 
@@ -66,8 +34,6 @@
         request to server and after successfull submission
         display the object.
     */
-
-
     $("#customer-form").submit(function (e) {
         // preventing from page reload and default actions
         e.preventDefault();
@@ -107,45 +73,44 @@
 
 
 
-      if ($('#task-form').length > 0) {
-          // Exists.
-          $("#task-form").submit(function (e) {
-              // preventing from page reload and default actions
 
-              e.preventDefault();
-              // serialize the data for sending the form data.
-              var serializedData = $(this).serialize();
+    $("#task-form").submit(function (e) {
+        // preventing from page reload and default actions
 
-              // make POST ajax call
-              $.ajax({
-                  type: 'POST',
-                  url: "{% url 'post_task' order.id %}",
-                  data: serializedData,
-                  success: function (response) {
+        e.preventDefault();
+        // serialize the data for sending the form data.
+        var serializedData = $(this).serialize();
 
-                      // on successfull creating object
-                      // 1. clear the form.
-                      $("#task-form").trigger('reset');
-                      // 2. focus to nickname input
-                      $("#task").focus();
+        // make POST ajax call
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'post_task' order.id %}",
+            data: serializedData,
+            success: function (response) {
 
-                      // display the newly friend to table.
-                      var instance = JSON.parse(response["instance"]);
-                      var fields = instance[0]["fields"];
-                      $("#my_tasks tbody").prepend(
-                          `<tr>
-                    <td >${fields["task"] || ""}</td>
+                // on successfull creating object
+                // 1. clear the form.
+                $("#task-form").trigger('reset');
+                // 2. focus to nickname input
+                $("#task").focus();
+
+                // display the newly friend to table.
+                var instance = JSON.parse(response["instance"]);
+                var fields = instance[0]["fields"];
+                $("#my_tasks tbody").prepend(
+                    `<tr>
+                    <td >${fields["task"]||""}</td>
                     </tr>`
-                      )
-                  },
-                  error: function (response) {
+                )
+            },
+            error: function (response) {
 
-                      // alert the error if any error occured
-                      alert(response["responseJSON"]["error"]);
-                  }
-              })
-          })
-      }
+                // alert the error if any error occured
+                alert(response["responseJSON"]["error"]);
+            }
+        })
+    })
+
 
      $("#service-form").submit(function (e) {
         // preventing from page reload and default actions
@@ -244,14 +209,5 @@
     })
 
       */
-
-
-
-
-
-</script>
-
-
-</html>
 
 
