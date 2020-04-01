@@ -1,0 +1,1309 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+            <link rel="stylesheet" type="text/css" href="{% static '/css/maincvtemp.css' %}">
+
+</head>
+<body>
+<div id="DIV_2">
+	<!-- page wrapper -->
+
+	<div id="DIV_3">
+		<!-- main -->
+
+		<div id="DIV_4">
+			<div id="DIV_5">
+				<!-- main content -->
+
+				<div id="DIV_6">
+					<div id="DIV_7">
+						<article id="ARTICLE_8">
+							 <span id="SPAN_9">Home</span><span id="SPAN_10"><span id="SPAN_11"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_12">Joe Doe</a></span></span><span id="SPAN_13">2019-07-02T17:20:31+00:00</span>
+							<div id="DIV_14">
+								<div id="DIV_15">
+									<div id="DIV_16">
+										<div id="DIV_17">
+											<div id="DIV_18">
+												<div id="DIV_19">
+													<div id="DIV_20">
+														<button id="BUTTON_21">
+															<i id="I_22"></i>
+														</button>
+														<div id="DIV_23">
+															<nav id="NAV_24">
+																<ul id="UL_25">
+																	<li id="LI_26">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#about-me" id="A_27"><i id="I_28"></i><span id="SPAN_29">About Me</span></a>
+																	</li>
+																	<li id="LI_30">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#experience" id="A_31"><i id="I_32"></i><span id="SPAN_33">Experience</span></a>
+																	</li>
+																	<li id="LI_34">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#education" id="A_35"><i id="I_36"></i><span id="SPAN_37">Education</span></a>
+																	</li>
+																	<li id="LI_38">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#skills" id="A_39"><i id="I_40"></i><span id="SPAN_41">Skills</span></a>
+																	</li>
+																	<li id="LI_42">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#portfolio" id="A_43"><i id="I_44"></i><span id="SPAN_45">Portfolio</span></a>
+																	</li>
+																	<li id="LI_46">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#recommendations" id="A_47"><i id="I_48"></i><span id="SPAN_49">Recommendations</span></a>
+																	</li>
+																	<li id="LI_50">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#blog" id="A_51"><i id="I_52"></i><span id="SPAN_53">Blog</span></a>
+																	</li>
+																	<li id="LI_54">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#say-hello" id="A_55"><i id="I_56"></i><span id="SPAN_57">Say Hello</span></a>
+																	</li>
+																</ul>
+															</nav>
+														</div>
+													</div>
+												</div>
+											</div>
+											<script id="SCRIPT_58">jQuery(document).ready(function($) {
+	/*
+	* Floating Menu Movement
+	*/
+	var menuFloatingAnim = {
+		$menuFloating: $('.floating-menu .floating-menu-body > .floating-menu-row'),
+
+		build: function() {
+			var self = this;
+			self.init();
+		},
+		init: function(){
+			var self  = this,
+				divisor = 0;
+
+			$(window).scroll(function() {
+				var scrollPercent = 100 * $(window).scrollTop() / ($(document).height() - $(window).height()),
+					st = $(this).scrollTop(),
+					divisor = $(document).height() / $(window).height();
+				if (divisor < 1.5) {
+					return;
+				}
+				var endValue = ($(document).height() - $(window).height()) / divisor,
+					offsetPx = st / divisor,
+					offsetTop = parseInt(self.$menuFloating.css('top'), 10);
+				if (endValue - offsetTop - 40 < self.$menuFloating.height()) {
+					offsetPx *= self.$menuFloating.height() / ( endValue - offsetTop - 40 );
+				}
+
+				self.$menuFloating.css({
+					transform : 'translateY( calc('+ scrollPercent +'vh - '+ offsetPx +'px) )'
+				});
+			});
+		}
+	}
+
+	if( $('.floating-menu').length ) {
+		if( $(window).height() > 700 ) {
+			menuFloatingAnim.build();
+		}
+	}
+});
+											</script>
+										</div>
+									</div>
+								</div>
+								<div id="DIV_59">
+										<div id="DIV_60">
+											<div id="DIV_61">
+												<div id="DIV_62">
+													<div id="DIV_63">
+														<div id="DIV_64">
+															<img width="718" height="982" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/me.jpg" alt="" id="IMG_65" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div id="DIV_66">
+											<div id="DIV_67">
+												<h1 id="H1_68">
+													Adam Doe
+												</h1>
+												<div id="DIV_69">
+													<div id="DIV_70">
+														<p id="P_71">
+															<span id="SPAN_72">Chief Product Officer at Okler Themes</span>
+														</p>
+													</div>
+												</div>
+												<div id="DIV_73">
+													<div id="DIV_74">
+														<p id="P_75">
+															<span id="SPAN_76">GREATER NEW YORK AREA</span> <span id="SPAN_77">INFORMATION TECHNOLOGY &amp; SERVICES</span>
+														</p>
+													</div>
+												</div>
+												<div id="DIV_78">
+													<div id="DIV_79">
+														<p id="P_80">
+															<strong id="STRONG_81"><span id="SPAN_82">PREVIOUS:</span></strong> FRONT-END DEVELOPER AT PORTO <a href="https://www.portotheme.com/wordpress/porto/resume/#experience" id="A_83">View More</a>
+														</p>
+														<p id="P_84">
+															<span id="SPAN_85"><strong id="STRONG_86">EDUCATION:</strong></span> PORTO SCHOOL <a href="https://www.portotheme.com/wordpress/porto/resume/#education" id="A_87">View More</a>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div id="DIV_88">
+											<div id="DIV_89">
+												<div id="DIV_90">
+													<div id="DIV_91">
+														<div id="DIV_92">
+															<img width="247" height="232" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/mouse.png" alt="" id="IMG_93" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div id="DIV_94">
+										</div>
+									</div>
+								<div id="DIV_95">
+									</div>
+								<div id="DIV_96">
+										<div id="DIV_97">
+											<div id="DIV_98">
+												<a href="https://www.portotheme.com/wordpress/porto/resume/#say-hello" id="A_99"></a>
+												<div id="DIV_100">
+													<div id="DIV_101">
+														<div id="DIV_102">
+															<div id="DIV_103">
+																<i id="I_104"></i>
+															</div>
+														</div>
+													</div>
+													<div id="DIV_105">
+														<div id="DIV_106">
+															<span id="SPAN_107">Contact Information</span>
+														</div>
+														<!-- description -->
+
+													</div>
+												</div>
+												<!-- porto-sicon-box -->
+
+											</div>
+										</div>
+										<div id="DIV_108">
+											<div id="DIV_109">
+												<a href="https://www.portotheme.com/wordpress/porto/resume/#say-hello" id="A_110"></a>
+												<div id="DIV_111">
+													<div id="DIV_112">
+														<div id="DIV_113">
+															<div id="DIV_114">
+																<i id="I_115"></i>
+															</div>
+														</div>
+													</div>
+													<div id="DIV_116">
+														<div id="DIV_117">
+															<span id="SPAN_118">Send Message</span>
+														</div>
+														<!-- description -->
+
+													</div>
+												</div>
+												<!-- porto-sicon-box -->
+
+											</div>
+										</div>
+										<div id="DIV_119">
+											<div id="DIV_120">
+												<a href="https://www.portotheme.com/wordpress/porto/resume/#" id="A_121"></a>
+												<div id="DIV_122">
+													<div id="DIV_123">
+														<div id="DIV_124">
+															<div id="DIV_125">
+																<i id="I_126"></i>
+															</div>
+														</div>
+													</div>
+													<div id="DIV_127">
+														<div id="DIV_128">
+															<span id="SPAN_129">Download Resume</span>
+														</div>
+														<!-- description -->
+
+													</div>
+												</div>
+												<!-- porto-sicon-box -->
+
+											</div>
+										</div>
+									</div>
+								<div id="DIV_130">
+									</div>
+								<div id="DIV_131">
+										<div id="DIV_132">
+											<div id="DIV_133">
+												<div id="DIV_134">
+													<a href="http://facebook.com/" id="A_135"></a>
+													<div id="DIV_136">
+														<i id="I_137"></i>
+													</div><a href="http://twitter.com/" id="A_138"></a>
+													<div id="DIV_139">
+														<i id="I_140"></i>
+													</div><a href="http://youtube.com/" id="A_141"></a>
+													<div id="DIV_142">
+														<i id="I_143"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								<div id="DIV_144">
+									</div>
+								<div id="DIV_145">
+										<div id="DIV_146">
+											<div id="DIV_147">
+												<div id="DIV_148">
+													<div id="DIV_149">
+														<h4 id="H4_150">
+															Personal Details
+														</h4>
+														<div id="DIV_151">
+															<div id="DIV_152">
+																<div id="DIV_153">
+																	<div id="DIV_154">
+																		<div id="DIV_155">
+																			<ul id="UL_156">
+																				<li id="LI_157">
+																					<span id="SPAN_158">Birthday:</span> <span id="SPAN_159">1990 October 2</span>
+																				</li>
+																				<li id="LI_160">
+																					<span id="SPAN_161">Marital:</span> <span id="SPAN_162">Single</span>
+																				</li>
+																				<li id="LI_163">
+																					<span id="SPAN_164">Nationality:</span> <span id="SPAN_165">American</span>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div id="DIV_166">
+																<div id="DIV_167">
+																	<div id="DIV_168">
+																		<div id="DIV_169">
+																			<ul id="UL_170">
+																				<li id="LI_171">
+																					<span id="SPAN_172">Skype:</span> <span id="SPAN_173"><a href="skype:yourskype?chat" id="A_174">yourskype</a></span>
+																				</li>
+																				<li id="LI_175">
+																					<span id="SPAN_176">PHONE:</span> <span id="SPAN_177"><a href="tel:123456789" id="A_178">123-456-789</a></span>
+																				</li>
+																				<li id="LI_179">
+																					<span id="SPAN_180">EMAIL:</span> <span id="SPAN_181"><a href="mailto:info@domain.com" id="A_182">info@domain.com</a></span>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<h1 id="H1_183">
+													ABOUT ME
+												</h1>
+												<div id="DIV_184">
+													<div id="DIV_185">
+														<p id="P_186">
+															Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+														</p>
+														<div id="DIV_187">
+															Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu. Praesent aliquam velit vel libero dictum, non sollicitudin lectus mollis. Morbi sollicitudin auctor gravida. Vivamus vitae dui non lorem euismod pretium. Morbi congue sem sed ex iaculis, nec mattis felis pretium. Nullam molestie libero id odio blandit sodales. Suspendisse non mauris et felis molestie placerat aliquet a risus. Aliquam ac leo tempus, hendrerit eros mollis, gravida est. Proin euismod ipsum a tellus condimentum dapibus. Integer porttitor felis elit, eget rutrum ligula commodo quis. Praesent ultricies neque eu mi congue blandit. Nulla feugiat feugiat aliquet. Morbi sed mattis erat. Nullam scelerisque molestie eros, id tristique felis iaculis non. Duis pellentesque neque eget iaculis varius. Donec at nisl semper, aliquam est id, tincidunt lacus. Donec at erat purus. Morbi tincidunt nunc non diam porta, at fermentum orci bibendum. Donec arcu nisi, ornare nec commodo vitae, sollicitudin sed magna. Cras sit amet justo et nulla pulvinar laoreet. Phasellus scelerisque, metus id posuere vulputate, diam tellus iaculis sapien, eget scelerisque ipsum libero convallis velit. Duis lorem ligula, faucibus quis tellus nec, fringilla ultricies leo. Etiam tempus congue magna. Suspendisse porta dictum tortor, eu volutpat ipsum eleifend nec. Aliquam dapibus lorem luctus, cursus libero imperdiet, mattis nunc. Sed in ipsum diam. Quisque efficitur metus purus, vitae fermentum lacus venenatis id.
+														</div>
+														<p id="P_188">
+															<a id="A_189" href="https://www.portotheme.com/wordpress/porto/resume/#">View More</a>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								<div id="DIV_190">
+									</div>
+								<div id="DIV_191">
+										<div id="DIV_192">
+											<div id="DIV_193">
+												<h1 id="H1_194">
+													EXPERIENCE
+												</h1>
+												<section id="SECTION_195">
+													<div id="DIV_196">
+														<article id="ARTICLE_197">
+															<div id="DIV_198">
+																<span id="SPAN_199">From<span id="SPAN_200">Sep 2012</span></span><span id="SPAN_201">To<span id="SPAN_202">Present</span></span>
+																<p id="P_203">
+																	(3 YEARS 9 MONTHS)
+																</p><span id="SPAN_204">Okler Themes<span id="SPAN_205">GREATER NEW YORK</span></span>
+															</div>
+															<div id="DIV_206">
+																<h4 id="H4_207">
+																	Chief Product Officer
+																</h4>
+																<p id="P_208">
+																	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu.
+																</p>
+															</div>
+														</article>
+														<article id="ARTICLE_209">
+															<div id="DIV_210">
+																<span id="SPAN_211">From<span id="SPAN_212">Sep 2012</span></span><span id="SPAN_213">To<span id="SPAN_214">Present</span></span>
+																<p id="P_215">
+																	(3 YEARS 9 MONTHS)
+																</p><span id="SPAN_216">Okler Themes<span id="SPAN_217">GREATER NEW YORK</span></span>
+															</div>
+															<div id="DIV_218">
+																<h4 id="H4_219">
+																	Chief Product Officer
+																</h4>
+																<p id="P_220">
+																	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu.
+																</p>
+															</div>
+														</article>
+														<article id="ARTICLE_221">
+															<div id="DIV_222">
+																<span id="SPAN_223">From<span id="SPAN_224">Sep 2012</span></span><span id="SPAN_225">To<span id="SPAN_226">Present</span></span>
+																<p id="P_227">
+																	(3 YEARS 9 MONTHS)
+																</p><span id="SPAN_228">Okler Themes<span id="SPAN_229">GREATER NEW YORK</span></span>
+															</div>
+															<div id="DIV_230">
+																<h4 id="H4_231">
+																	Chief Product Officer
+																</h4>
+																<p id="P_232">
+																	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu.
+																</p>
+															</div>
+														</article>
+														<div id="DIV_233">
+														</div>
+													</div>
+												</section>
+											</div>
+										</div>
+									</div>
+								<div id="DIV_234">
+									</div>
+								<div id="DIV_235">
+										<div id="DIV_236">
+											<div id="DIV_237">
+												<h1 id="H1_238">
+													EDUCATION
+												</h1>
+												<div id="DIV_239">
+													<div id="DIV_240">
+														<div id="DIV_241">
+															<div id="DIV_242">
+																<div id="DIV_243">
+																	<div id="DIV_244">
+																		<div id="DIV_245">
+																			<div id="DIV_246">
+																				<div id="DIV_247">
+																					<div id="DIV_248">
+																						<div id="DIV_249">
+																							<div id="DIV_250">
+																								<div id="DIV_251">
+																									<i id="I_252"></i>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<!-- porto-sicon-box -->
+
+																			</div>
+																			<div id="DIV_253">
+																				<div id="DIV_254">
+																					<div id="DIV_255">
+																						<h2 id="H2_256">
+																							Porto University
+																						</h2>
+																					</div>
+																					<div id="DIV_257">
+																						<p id="P_258">
+																							Master of Information Technology
+																						</p>
+																						<p id="P_259">
+																							<span id="SPAN_260"><strong id="STRONG_261">2001-2015</strong></span>
+																						</p>
+																						<p id="P_262">
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div id="DIV_263">
+																	<div id="DIV_264">
+																		<div id="DIV_265">
+																			<div id="DIV_266">
+																				<div id="DIV_267">
+																					<div id="DIV_268">
+																						<div id="DIV_269">
+																							<div id="DIV_270">
+																								<div id="DIV_271">
+																									<i id="I_272"></i>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<!-- porto-sicon-box -->
+
+																			</div>
+																			<div id="DIV_273">
+																				<div id="DIV_274">
+																					<div id="DIV_275">
+																						<h2 id="H2_276">
+																							Porto University
+																						</h2>
+																					</div>
+																					<div id="DIV_277">
+																						<p id="P_278">
+																							Master of Information Technology
+																						</p>
+																						<p id="P_279">
+																							<span id="SPAN_280"><strong id="STRONG_281">2001-2015</strong></span>
+																						</p>
+																						<p id="P_282">
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div id="DIV_283">
+																	<div id="DIV_284">
+																		<div id="DIV_285">
+																			<div id="DIV_286">
+																				<div id="DIV_287">
+																					<div id="DIV_288">
+																						<div id="DIV_289">
+																							<div id="DIV_290">
+																								<div id="DIV_291">
+																									<i id="I_292"></i>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<!-- porto-sicon-box -->
+
+																			</div>
+																			<div id="DIV_293">
+																				<div id="DIV_294">
+																					<div id="DIV_295">
+																						<h2 id="H2_296">
+																							Porto University
+																						</h2>
+																					</div>
+																					<div id="DIV_297">
+																						<p id="P_298">
+																							Master of Information Technology
+																						</p>
+																						<p id="P_299">
+																							<span id="SPAN_300"><strong id="STRONG_301">2001-2015</strong></span>
+																						</p>
+																						<p id="P_302">
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div id="DIV_303">
+																	<div id="DIV_304">
+																		<div id="DIV_305">
+																			<div id="DIV_306">
+																				<div id="DIV_307">
+																					<div id="DIV_308">
+																						<div id="DIV_309">
+																							<div id="DIV_310">
+																								<div id="DIV_311">
+																									<i id="I_312"></i>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<!-- porto-sicon-box -->
+
+																			</div>
+																			<div id="DIV_313">
+																				<div id="DIV_314">
+																					<div id="DIV_315">
+																						<h2 id="H2_316">
+																							Porto University
+																						</h2>
+																					</div>
+																					<div id="DIV_317">
+																						<p id="P_318">
+																							Master of Information Technology
+																						</p>
+																						<p id="P_319">
+																							<span id="SPAN_320"><strong id="STRONG_321">2001-2015</strong></span>
+																						</p>
+																						<p id="P_322">
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div id="DIV_323">
+																	<div id="DIV_324">
+																		<div id="DIV_325">
+																			<div id="DIV_326">
+																				<div id="DIV_327">
+																					<div id="DIV_328">
+																						<div id="DIV_329">
+																							<div id="DIV_330">
+																								<div id="DIV_331">
+																									<i id="I_332"></i>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<!-- porto-sicon-box -->
+
+																			</div>
+																			<div id="DIV_333">
+																				<div id="DIV_334">
+																					<div id="DIV_335">
+																						<h2 id="H2_336">
+																							Porto University
+																						</h2>
+																					</div>
+																					<div id="DIV_337">
+																						<p id="P_338">
+																							Master of Information Technology
+																						</p>
+																						<p id="P_339">
+																							<span id="SPAN_340"><strong id="STRONG_341">2001-2015</strong></span>
+																						</p>
+																						<p id="P_342">
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div id="DIV_343">
+																	<div id="DIV_344">
+																		<div id="DIV_345">
+																			<div id="DIV_346">
+																				<div id="DIV_347">
+																					<div id="DIV_348">
+																						<div id="DIV_349">
+																							<div id="DIV_350">
+																								<div id="DIV_351">
+																									<i id="I_352"></i>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<!-- porto-sicon-box -->
+
+																			</div>
+																			<div id="DIV_353">
+																				<div id="DIV_354">
+																					<div id="DIV_355">
+																						<h2 id="H2_356">
+																							Porto University
+																						</h2>
+																					</div>
+																					<div id="DIV_357">
+																						<p id="P_358">
+																							Master of Information Technology
+																						</p>
+																						<p id="P_359">
+																							<span id="SPAN_360"><strong id="STRONG_361">2001-2015</strong></span>
+																						</p>
+																						<p id="P_362">
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<ul id="UL_363">
+															<li id="LI_364">
+																<i id="I_365"></i>
+															</li>
+															<li id="LI_366">
+																<i id="I_367"></i>
+															</li>
+															<li id="LI_368">
+																<i id="I_369"></i>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<script id="SCRIPT_370">jQuery(document).ready(function ($) {
+		if ($.fn.slick) {
+			$('.porto-carousel-20072630535e766afb64c5e').slick({dots: true,autoplaySpeed: 5000,speed: 300,infinite: false,arrows: false,slidesToScroll:2,slidesToShow:2,swipe: true,draggable: true,touchMove: true,pauseOnHover: true,responsive: [
+				{
+				  breakpoint: 1025,
+				  settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+				  }
+				},
+				{
+				  breakpoint: 769,
+				  settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2
+				  }
+				},
+				{
+				  breakpoint: 481,
+				  settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				  }
+				}
+			],pauseOnDotsHover: true,customPaging: function(slider, i) {
+	   return '<i type="button" style="color:#2e353e;" class="far fa-circle" data-role="none"></i>';
+	},});
+		} else {
+			var c = document.createElement("script");
+			c.src = "https://www.portotheme.com/wordpress/porto/resume/wp-content/themes/porto/js/libs/jquery.slick.min.js";
+			if (!$('script[src="' + c.src + '"]').length) {
+				document.getElementsByTagName("body")[0].appendChild(c);
+			}
+			c = document.createElement("script");
+			c.src = "https://www.portotheme.com/wordpress/porto/resume/wp-content/plugins/porto-functionality/shortcodes/assets/js/ultimate-carousel-loader.min.js";
+			if (!$('script[src="' + c.src + '"]').length) {
+				document.getElementsByTagName("body")[0].appendChild(c);
+			}
+			setTimeout(function() {
+				if ($.fn.slick) { $('.porto-carousel-20072630535e766afb64c5e').slick({dots: true,autoplaySpeed: 5000,speed: 300,infinite: false,arrows: false,slidesToScroll:2,slidesToShow:2,swipe: true,draggable: true,touchMove: true,pauseOnHover: true,responsive: [
+				{
+				  breakpoint: 1025,
+				  settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+				  }
+				},
+				{
+				  breakpoint: 769,
+				  settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2
+				  }
+				},
+				{
+				  breakpoint: 481,
+				  settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				  }
+				}
+			],pauseOnDotsHover: true,customPaging: function(slider, i) {
+	   return '<i type="button" style="color:#2e353e;" class="far fa-circle" data-role="none"></i>';
+	},}); }
+			}, 300);
+		}
+	});
+												</script>
+											</div>
+										</div>
+									</div>
+								<div id="DIV_371">
+										</div>
+								<div id="DIV_372">
+											<div id="DIV_373">
+												<div id="DIV_374">
+													<h1 id="H1_375">
+														SKILLS &amp; LANGUAGE
+													</h1>
+													<div id="DIV_376">
+														<div id="DIV_377">
+															<span id="SPAN_378">START UP</span>
+														</div>
+														<div id="DIV_379">
+															<span id="SPAN_380"></span>
+														</div>
+														<div id="DIV_381">
+															<span id="SPAN_382">INNOVATION</span>
+														</div>
+														<div id="DIV_383">
+															<span id="SPAN_384"></span>
+														</div>
+														<div id="DIV_385">
+															<span id="SPAN_386">PRODUCTS</span>
+														</div>
+														<div id="DIV_387">
+															<span id="SPAN_388"></span>
+														</div>
+														<div id="DIV_389">
+															<span id="SPAN_390">CSS</span>
+														</div>
+														<div id="DIV_391">
+															<span id="SPAN_392"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div id="DIV_393">
+												<div id="DIV_394">
+													<div id="DIV_395">
+														<div id="DIV_396">
+															<span id="SPAN_397">JAVASCRIPT</span>
+														</div>
+														<div id="DIV_398">
+															<span id="SPAN_399"></span>
+														</div>
+														<div id="DIV_400">
+															<span id="SPAN_401">BUSINESS</span>
+														</div>
+														<div id="DIV_402">
+															<span id="SPAN_403"></span>
+														</div>
+														<div id="DIV_404">
+															<span id="SPAN_405">E-COMMERCE</span>
+														</div>
+														<div id="DIV_406">
+															<span id="SPAN_407"></span>
+														</div>
+														<div id="DIV_408">
+															<span id="SPAN_409">CREATIVE</span>
+														</div>
+														<div id="DIV_410">
+															<span id="SPAN_411"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div id="DIV_412">
+												<div id="DIV_413">
+													<div id="DIV_414">
+														<div id="DIV_415">
+															<h4 id="H4_416">
+																Languages
+															</h4>
+															<div id="DIV_417">
+																<div id="DIV_418">
+																	<ul id="UL_419">
+																		<li id="LI_420">
+																			<span id="SPAN_421"><img src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/blank.gif" alt="English" id="IMG_422" />English:</span><span id="SPAN_423">Advanced</span>
+																		</li>
+																		<li id="LI_424">
+																			<span id="SPAN_425"><img src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/blank.gif" alt="Spanish" id="IMG_426" />Spanish:</span><span id="SPAN_427">Advanced</span>
+																		</li>
+																		<li id="LI_428">
+																			<span id="SPAN_429"><img src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/blank.gif" alt="Française" id="IMG_430" />French:</span><span id="SPAN_431">Basic</span>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+								<div id="DIV_432">
+										</div>
+								<div id="DIV_433">
+											<div id="DIV_434">
+												<div id="DIV_435">
+													<h1 id="H1_436">
+														PORTFOLIO
+													</h1>
+													<div id="DIV_437">
+														<div id="DIV_438">
+															<div id="DIV_439">
+																<ul id="UL_440">
+																	<li id="LI_441">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#" id="A_442">Show All</a>
+																	</li>
+																	<li id="LI_443">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#" id="A_444">BRANDS</a>
+																	</li>
+																	<li id="LI_445">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#" id="A_446">LOGOS</a>
+																	</li>
+																	<li id="LI_447">
+																		<a href="https://www.portotheme.com/wordpress/porto/resume/#" id="A_448">WEBSITES</a>
+																	</li>
+																</ul><hr id="HR_449" />
+																<div id="DIV_450">
+																	<article id="ARTICLE_451">
+																		 <span id="SPAN_452">Portfolio1</span><span id="SPAN_453"><span id="SPAN_454"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_455">Joe Doe</a></span></span><span id="SPAN_456">2017-02-12T02:27:47+00:00</span>
+																		<div id="DIV_457">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-1.jpg" id="A_458"> <span id="SPAN_459"> <span id="SPAN_460"><img width="367" height="282" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-1-367x282.jpg" alt="" id="IMG_461" /><span id="SPAN_462"></span><span id="SPAN_463"></span></span></span></a>
+																		</div>
+																	</article>
+																	<article id="ARTICLE_464">
+																		 <span id="SPAN_465">Portfolio2</span><span id="SPAN_466"><span id="SPAN_467"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_468">Joe Doe</a></span></span><span id="SPAN_469">2017-02-11T02:31:53+00:00</span>
+																		<div id="DIV_470">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-2.jpg" id="A_471"> <span id="SPAN_472"> <span id="SPAN_473"><img width="367" height="367" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-2-367x367.jpg" alt="" id="IMG_474" /><span id="SPAN_475"></span><span id="SPAN_476"></span></span></span></a>
+																		</div>
+																	</article>
+																	<article id="ARTICLE_477">
+																		 <span id="SPAN_478">Portfolio3</span><span id="SPAN_479"><span id="SPAN_480"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_481">Joe Doe</a></span></span><span id="SPAN_482">2017-02-10T02:35:54+00:00</span>
+																		<div id="DIV_483">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-3.jpg" id="A_484"> <span id="SPAN_485"> <span id="SPAN_486"><img width="367" height="367" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-3-367x367.jpg" alt="" id="IMG_487" /><span id="SPAN_488"></span><span id="SPAN_489"></span></span></span></a>
+																		</div>
+																	</article>
+																	<article id="ARTICLE_490">
+																		 <span id="SPAN_491">Portfolio4</span><span id="SPAN_492"><span id="SPAN_493"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_494">Joe Doe</a></span></span><span id="SPAN_495">2017-02-10T02:35:18+00:00</span>
+																		<div id="DIV_496">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-4.jpg" id="A_497"> <span id="SPAN_498"> <span id="SPAN_499"><img width="367" height="261" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-4-367x261.jpg" alt="" id="IMG_500" /><span id="SPAN_501"></span><span id="SPAN_502"></span></span></span></a>
+																		</div>
+																	</article>
+																	<article id="ARTICLE_503">
+																		 <span id="SPAN_504">Portfolio5</span><span id="SPAN_505"><span id="SPAN_506"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_507">Joe Doe</a></span></span><span id="SPAN_508">2017-02-10T02:34:39+00:00</span>
+																		<div id="DIV_509">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-6.jpg" id="A_510"> <span id="SPAN_511"> <span id="SPAN_512"><img width="367" height="549" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-6-367x549.jpg" alt="" id="IMG_513" /><span id="SPAN_514"></span><span id="SPAN_515"></span></span></span></a>
+																		</div>
+																	</article>
+																	<article id="ARTICLE_516">
+																		 <span id="SPAN_517">Portfolio6</span><span id="SPAN_518"><span id="SPAN_519"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_520">Joe Doe</a></span></span><span id="SPAN_521">2017-02-10T02:34:01+00:00</span>
+																		<div id="DIV_522">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-7.jpg" id="A_523"> <span id="SPAN_524"> <span id="SPAN_525"><img width="367" height="287" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-7-367x287.jpg" alt="" id="IMG_526" /><span id="SPAN_527"></span><span id="SPAN_528"></span></span></span></a>
+																		</div>
+																	</article>
+																	<article id="ARTICLE_529">
+																		 <span id="SPAN_530">Portfolio7</span><span id="SPAN_531"><span id="SPAN_532"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_533">Joe Doe</a></span></span><span id="SPAN_534">2017-02-10T02:33:15+00:00</span>
+																		<div id="DIV_535">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-8.jpg" id="A_536"> <span id="SPAN_537"> <span id="SPAN_538"><img width="367" height="367" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-8-367x367.jpg" alt="" id="IMG_539" /><span id="SPAN_540"></span><span id="SPAN_541"></span></span></span></a>
+																		</div>
+																	</article>
+																	<article id="ARTICLE_542">
+																		 <span id="SPAN_543">Portfolio8</span><span id="SPAN_544"><span id="SPAN_545"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_546">Joe Doe</a></span></span><span id="SPAN_547">2017-02-10T02:32:41+00:00</span>
+																		<div id="DIV_548">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-5.jpg" id="A_549"> <span id="SPAN_550"> <span id="SPAN_551"><img width="367" height="509" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/portfolio-5-367x509.jpg" alt="" id="IMG_552" /><span id="SPAN_553"></span><span id="SPAN_554"></span></span></span></a>
+																		</div>
+																	</article>
+																</div>
+																<div id="DIV_555">
+																	<div id="DIV_556">
+																	</div>
+																	<div id="DIV_557">
+																	</div>
+																	<div id="DIV_558">
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+								<div id="DIV_559">
+										</div>
+								<div id="DIV_560">
+											<div id="DIV_561">
+												<div id="DIV_562">
+													<h1 id="H1_563">
+														RECOMMENDATIONS
+													</h1>
+													<div id="DIV_564">
+														<div id="DIV_565">
+															<div id="DIV_566">
+																<div id="DIV_567">
+																	<div id="DIV_568">
+																		<div id="DIV_569">
+																			<blockquote id="BLOCKQUOTE_570">
+																				<p id="P_571">
+																					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu. Praesent aliquam velit vel libero dictum, non sollicitudin lectus mollis. Morbi sollicitudin auctor gravida.
+																				</p>
+																			</blockquote>
+																			<div id="DIV_572">
+																				<p id="P_573">
+																					<strong id="STRONG_574">Bob Doe</strong><span id="SPAN_575">Director of Engineering</span>
+																				</p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div id="DIV_576">
+																	<div id="DIV_577">
+																		<div id="DIV_578">
+																			<blockquote id="BLOCKQUOTE_579">
+																				<p id="P_580">
+																					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu. Praesent aliquam velit vel libero dictum, non sollicitudin lectus mollis. Morbi sollicitudin auctor gravida.
+																				</p>
+																			</blockquote>
+																			<div id="DIV_581">
+																				<p id="P_582">
+																					<strong id="STRONG_583">Bob Doe</strong><span id="SPAN_584">Director of Engineering</span>
+																				</p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div id="DIV_585">
+															<button type="button" id="BUTTON_586">
+															</button>
+															<button type="button" id="BUTTON_587">
+															</button>
+														</div>
+														<div id="DIV_588">
+															<button id="BUTTON_589">
+																<span id="SPAN_590"></span>
+															</button>
+															<button id="BUTTON_591">
+																<span id="SPAN_592"></span>
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+								<div id="DIV_593">
+										</div>
+								<div id="DIV_594">
+											<div id="DIV_595">
+												<div id="DIV_596">
+													<h1 id="H1_597">
+														MY BLOG
+													</h1>
+													<div id="DIV_598">
+														<div id="DIV_599">
+															<div id="DIV_600">
+																<article id="ARTICLE_601">
+																	<div id="DIV_602">
+																		<div id="DIV_603">
+																			<div id="DIV_604">
+																				<div id="DIV_605">
+																					<div id="DIV_606">
+																						<div id="DIV_607">
+																							<a href="https://www.portotheme.com/wordpress/porto/resume/2018/07/25/uiux-concepts-2/" id="A_608"></a>
+																							<div id="DIV_609">
+																								<img width="555" height="209" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/blog-2.jpg" alt="" id="IMG_610" />
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<div id="DIV_611">
+																					<button type="button" id="BUTTON_612">
+																					</button>
+																					<button type="button" id="BUTTON_613">
+																					</button>
+																				</div>
+																				<div id="DIV_614">
+																					<button id="BUTTON_615">
+																						<span id="SPAN_616"></span>
+																					</button>
+																				</div>
+																			</div>
+																		</div>
+																		<!-- Post meta before content -->
+
+																		<div id="DIV_617">
+																			<h4 id="H4_618">
+																				<a href="https://www.portotheme.com/wordpress/porto/resume/2018/07/25/uiux-concepts-2/" id="A_619">UI,UX Concepts</a>
+																			</h4> <span id="SPAN_620"><span id="SPAN_621"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_622">Joe Doe</a></span></span><span id="SPAN_623">2018-07-25T09:28:15+00:00</span><a href="https://www.portotheme.com/wordpress/porto/resume/2018/07/25/uiux-concepts-2/" id="A_624"></a>
+																			<p id="P_625">
+																				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis...
+																			</p>
+																		</div>
+																		<div id="DIV_626">
+																			<span id="SPAN_627">SHARE:</span>
+																			<div id="DIV_628">
+																				<a href="https://www.facebook.com/sharer.php?u=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/uiux-concepts-2/" rel="nofollow" id="A_629">Facebook</a> <a href="https://twitter.com/intent/tweet?text=UI%2CUX+Concepts&amp;url=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/uiux-concepts-2/" rel="nofollow" id="A_630">Twitter</a> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/uiux-concepts-2/&amp;title=UI%2CUX+Concepts" rel="nofollow" id="A_631">LinkedIn</a> <a href="https://plus.google.com/share?url=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/uiux-concepts-2/" rel="nofollow" id="A_632">Google +</a> <a href="mailto:?subject=UI%2CUX+Concepts&amp;body=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/uiux-concepts-2/" rel="nofollow" id="A_633">Email</a>
+																			</div>
+																		</div>
+																		<!-- Post meta after content -->
+
+																		<div id="DIV_634">
+																			<span id="SPAN_635"><i id="I_636"></i>July 25, 2018</span>
+																		</div>
+																		<div id="DIV_637">
+																		</div>
+																		<div id="DIV_638">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/2018/07/25/uiux-concepts-2/" id="A_639">Read more...</a>
+																		</div>
+																	</div>
+																</article>
+																<article id="ARTICLE_640">
+																	<div id="DIV_641">
+																		<div id="DIV_642">
+																			<div id="DIV_643">
+																				<div id="DIV_644">
+																					<div id="DIV_645">
+																						<div id="DIV_646">
+																							<a href="https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/" id="A_647"></a>
+																							<div id="DIV_648">
+																								<img width="555" height="209" src="https://www.portotheme.com/wordpress/porto/resume/wp-content/uploads/sites/73/2017/02/blog-1.jpg" alt="" id="IMG_649" />
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<div id="DIV_650">
+																					<button type="button" id="BUTTON_651">
+																					</button>
+																					<button type="button" id="BUTTON_652">
+																					</button>
+																				</div>
+																				<div id="DIV_653">
+																					<button id="BUTTON_654">
+																						<span id="SPAN_655"></span>
+																					</button>
+																				</div>
+																			</div>
+																		</div>
+																		<!-- Post meta before content -->
+
+																		<div id="DIV_656">
+																			<h4 id="H4_657">
+																				<a href="https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/" id="A_658">Design Driven</a>
+																			</h4> <span id="SPAN_659"><span id="SPAN_660"><a href="https://www.portotheme.com/wordpress/porto/resume/author/porto_admin/" title="Posts by Joe Doe" rel="author" id="A_661">Joe Doe</a></span></span><span id="SPAN_662">2018-07-25T09:27:48+00:00</span><a href="https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/" id="A_663"></a>
+																			<p id="P_664">
+																				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis...
+																			</p>
+																		</div>
+																		<div id="DIV_665">
+																			<span id="SPAN_666">SHARE:</span>
+																			<div id="DIV_667">
+																				<a href="https://www.facebook.com/sharer.php?u=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/" rel="nofollow" id="A_668">Facebook</a> <a href="https://twitter.com/intent/tweet?text=Design+Driven&amp;url=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/" rel="nofollow" id="A_669">Twitter</a> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/&amp;title=Design+Driven" rel="nofollow" id="A_670">LinkedIn</a> <a href="https://plus.google.com/share?url=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/" rel="nofollow" id="A_671">Google +</a> <a href="mailto:?subject=Design+Driven&amp;body=https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/" rel="nofollow" id="A_672">Email</a>
+																			</div>
+																		</div>
+																		<!-- Post meta after content -->
+
+																		<div id="DIV_673">
+																			<span id="SPAN_674"><i id="I_675"></i>July 25, 2018</span>
+																		</div>
+																		<div id="DIV_676">
+																		</div>
+																		<div id="DIV_677">
+																			 <a href="https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/" id="A_678">Read more...</a>
+																		</div>
+																	</div>
+																</article>
+															</div>
+														</div>
+														<div id="DIV_679">
+															 <a href="https://www.portotheme.com/wordpress/porto/resume/2018/07/25/design-driven-2/" id="A_680">View More</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+								<div id="DIV_681">
+										</div>
+								<div id="DIV_682">
+											<div id="DIV_683">
+												<div id="DIV_684">
+													<h1 id="H1_685">
+														SAY HELLO
+													</h1>
+													<div id="DIV_686">
+														<div id="DIV_687">
+														</div>
+														<form action="https://www.portotheme.com/wordpress/porto/resume/#wpcf7-f89-p8-o1" method="post" id="FORM_688">
+															<div id="DIV_689">
+																<input type="hidden" name="_wpcf7" value="89" id="INPUT_690" />
+																<input type="hidden" name="_wpcf7_version" value="5.1.1" id="INPUT_691" />
+																<input type="hidden" name="_wpcf7_locale" value="en_US" id="INPUT_692" />
+																<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f89-p8-o1" id="INPUT_693" />
+																<input type="hidden" name="_wpcf7_container_post" value="8" id="INPUT_694" />
+																<input type="hidden" name="g-recaptcha-response" id="INPUT_695" />
+															</div>
+															<p id="P_696">
+																<span id="SPAN_697"><input type="text" name="your-name" size="40" placeholder="YOUR NAME *" id="INPUT_698" /></span>
+															</p>
+															<p id="P_699">
+																 <span id="SPAN_700"><input type="text" name="your-subject" size="40" placeholder="SUBJECT *" id="INPUT_701" /></span>
+															</p>
+															<p id="P_702">
+																<span id="SPAN_703"></span>
+																<textarea name="your-message" cols="40" rows="10" placeholder="MESSAGE *" id="TEXTAREA_704">
+																</textarea>
+															</p>
+															<p id="P_705">
+																<input type="submit" value="SUBMIT" id="INPUT_706" /><span id="SPAN_707"></span>
+															</p>
+															<div id="DIV_708">
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+											<div id="DIV_709">
+												<div id="DIV_710">
+													<a href="mailto:you@domain.com" id="A_711"></a>
+													<div id="DIV_712">
+														<div id="DIV_713">
+															<div id="DIV_714">
+																<div id="DIV_715">
+																	<i id="I_716"></i>
+																</div>
+															</div>
+														</div>
+														<div id="DIV_717">
+															<div id="DIV_718">
+																<span id="SPAN_719">EMAIL</span> <span id="SPAN_720">you@domain.com</span>
+															</div>
+															<!-- description -->
+
+														</div>
+													</div>
+													<!-- porto-sicon-box -->
+<a href="tel:+123456789" id="A_721"></a>
+													<div id="DIV_722">
+														<div id="DIV_723">
+															<div id="DIV_724">
+																<div id="DIV_725">
+																	<i id="I_726"></i>
+																</div>
+															</div>
+														</div>
+														<div id="DIV_727">
+															<div id="DIV_728">
+																<span id="SPAN_729">PHONE</span> <span id="SPAN_730">123-456-7890</span>
+															</div>
+															<!-- description -->
+
+														</div>
+													</div>
+													<!-- porto-sicon-box -->
+<a href="https://www.portotheme.com/wordpress/porto/resume/" id="A_731"></a>
+													<div id="DIV_732">
+														<div id="DIV_733">
+															<div id="DIV_734">
+																<div id="DIV_735">
+																	<i id="I_736"></i>
+																</div>
+															</div>
+														</div>
+														<div id="DIV_737">
+															<div id="DIV_738">
+																<span id="SPAN_739">SKYPE</span> <span id="SPAN_740">yourSkype</span>
+															</div>
+															<!-- description -->
+
+														</div>
+													</div>
+													<!-- porto-sicon-box -->
+
+													<div id="DIV_741">
+														<div id="DIV_742">
+															<div id="DIV_743">
+																<div id="DIV_744">
+																	<i id="I_745"></i>
+																</div>
+															</div>
+														</div>
+														<div id="DIV_746">
+															<div id="DIV_747">
+																<span id="SPAN_748">FOLLOW ME</span> <span id="SPAN_749"> <a href="http://www.facebook.com/" id="A_750">Facebook</a><a href="http://www.twitter.com/" id="A_751">Twitter</a><a href="http://www.linkdin.com/" id="A_752">Linkedin</a></span>
+															</div>
+															<!-- description -->
+
+														</div>
+													</div>
+													<!-- porto-sicon-box -->
+
+												</div>
+											</div>
+										</div>
+								<div id="DIV_753">
+										</div>
+							</div>
+						</article>
+						<div id="DIV_754">
+								</div>
+					</div>
+				</div>
+				<!-- end main content -->
+
+			</div>
+		</div>
+	</div>
+	<!-- end main -->
+
+	<div id="DIV_755">
+				<div id="DIV_756">
+					<div id="DIV_757">
+						<div id="DIV_758">
+							<div id="DIV_759">
+								 <span id="SPAN_760">© copyright 2020. All Rights Reserved.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+</div>
+<!-- end wrapper -->
+
+<!--[if lt IE 9]> <script src="https://www.portotheme.com/wordpress/porto/resume/wp-content/themes/porto/js/libs/html5shiv.min.js"></script> <script src="https://www.portotheme.com/wordpress/porto/resume/wp-content/themes/porto/js/libs/respond.min.js"></script> <![endif]-->
+
+<script type="text/javascript" id="SCRIPT_761">/*  */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/www.portotheme.com\/wordpress\/porto\/resume\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"cached":"1"};
+var js_porto_vars = {"rtl":"","ajax_url":"https:\/\/www.portotheme.com\/wordpress\/porto\/resume\/wp-admin\/admin-ajax.php","change_logo":"1","container_width":"1140","grid_gutter_width":"30","show_sticky_header":"","show_sticky_header_tablet":"0","show_sticky_header_mobile":"0","ajax_loader_url":"\/\/www.portotheme.com\/wordpress\/porto\/resume\/wp-content\/themes\/porto\/images\/ajax-loader@2x.gif","category_ajax":"","prdctfltr_ajax":"","slider_loop":"1","slider_autoplay":"1","slider_autoheight":"1","slider_speed":"5000","slider_nav":"","slider_nav_hover":"1","slider_margin":"","slider_dots":"1","slider_animatein":"","slider_animateout":"","product_thumbs_count":"4","product_zoom":"1","product_zoom_mobile":"1","product_image_popup":"1","zoom_type":"inner","zoom_scroll":"1","zoom_lens_size":"200","zoom_lens_shape":"square","zoom_contain_lens":"1","zoom_lens_border":"1","zoom_border_color":"#888888","zoom_border":"0","screen_lg":"1170","mfp_counter":"%curr% of %total%","mfp_img_error":"<a href=\"%url%\">The image<\/a> could not be loaded.","mfp_ajax_error":"<a href=\"%url%\">The content<\/a> could not be loaded.","popup_close":"Close","popup_prev":"Previous","popup_next":"Next","request_error":"The requested content cannot be loaded.<br\/>Please try again later.","loader_text":"Loading...","submenu_back":"Back","porto_nonce":"bc026dfb0f","use_skeleton_screen":[]};
+/*  */
+		</script>
+
+<script id="SCRIPT_763">var lastScrollTop = 0;
+
+	jQuery(window).on('scroll', function(){
+	   var st = jQuery(this).scrollTop();
+
+	   if (st > lastScrollTop){
+	   		jQuery('.img_plx img').css({
+	   			transform: 'translate(0, -'+ st +'px)'
+	   		});
+	   } else {
+	      jQuery('.img_plx img').css({
+	   			transform: 'translate(0, '+ -Math.abs(st) +'px)'
+	   		});
+	   }
+	   lastScrollTop = st;
+	});
+
+
+jQuery('#aboutMeMoreBtn').on('click', function() {
+		jQuery(this).hide();
+		jQuery('#aboutMeMore').toggleClass('about-me-more-visible');
+	});
+
+jQuery(document).ready(function(){
+	jQuery('.post-block.post-share').each(function(){
+    	var this_ = jQuery(this);
+      	this_.insertAfter( this_.parent() );
+      	this_.prepend('<span class="custom-share-text font-weight-semibold text-color-dark">SHARE:</span>');
+    });
+});
+				</script>
+<!-- Dynamic page generated in 2.492 seconds. -->
+
+<!-- Cached page generated by WP-Super-Cache on 2020-03-21 19:28:59 -->
+
+<!-- super cache -->
+
+<div id="DIV_764">
+						<i id="I_765"></i>
+					</div>
+</body>
+</html>

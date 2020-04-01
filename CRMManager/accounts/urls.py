@@ -29,5 +29,5 @@ urlpatterns = [
     path('post/ajax/service/<int:id>', views.postService, name="post_service"),
 
     #file
-    path('post/ajax/file/<int:id>', views.postFile, name="post_file"),
+    path(r'^upload/(?P<id>\d+)/$', views.upload_files, name='upload_picture'),
 ]

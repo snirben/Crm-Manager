@@ -58,7 +58,7 @@ ROOT_URLCONF = 'CRMManager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [r'C:\Users\snirb\Dropbox\Projects\Crm-Manager\CRMManager\accounts\templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

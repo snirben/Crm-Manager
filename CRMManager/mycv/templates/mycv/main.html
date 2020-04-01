@@ -6,23 +6,65 @@
     <title>Snir Ben Yosef Resume</title>
         <link rel="stylesheet" type="text/css" href="{% static '/css/maincv.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+<script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
 </head>
 <body>
 
 <!-- main -->
 <div id="main" class="no-breadcrumbs">
- <div class="container">
+
+
+ <div id="float-navbar">
+      <div class="float-navbar-h1">
+       <nav class="float-bav-bar-h2 container">
+       <ul class="nav flex-column">
+
+           <div class="linkdiv">
+           <li class="nav-item">
+    <a class="nav-link active" href="#"> <span class="iconify" data-icon="simple-line-icons:home" data-inline="false"></span>
+</a>
+               </div>
+           <div class="linkdiv">
+           <li class="nav-item">
+    <a class="nav-link active" href="#"> <span class="iconify" data-icon="simple-line-icons:home" data-inline="false"></span>
+</a>
+               </div>
+        <div class="linkdiv">
+           <li class="nav-item">
+    <a class="nav-link active" href="#"> <span class="iconify" data-icon="simple-line-icons:home" data-inline="false"></span>
+</a>
+               </div>
+          <div class="linkdiv">
+           <li class="nav-item">
+    <a class="nav-link active" href="#"> <span class="iconify" data-icon="simple-line-icons:home" data-inline="false"></span>
+</a>
+               </div>
+               <span class="font-weight-bold "data-toggle="tooltip" data-placement="right" title="Tooltip on right"></span></a></li>
+
+
+       </ul>
+
+
+       </nav>
+      </div>
+
+      </div>
   <div class="page-content">
       <!--about me -->
-      <div id="about-me" class="row">
-          <div class="col-4">
+
+      <div id="about-me" >
+          <!-- MyImage-->
+       <div class="container container-sm container-md container-lg container-xl">
+          <div class="row">
+          <div class="col-md-4">
               <div class="myimage">
-                  <img id="profile" " src= "{% static "css/myimage.jpg" %}" alt="..." class="img-thumbnail img-responsive">
+                  <img id="profile"  src="{% static "css/myimage.jpg" %}" alt="..." class="img-thumbnail img-responsive">
 
           </div>
               </div>
-          <div class="col-5">
+          <!-- My Name and details -->
+          <div class="col-md-4 mid">
               <h1 id="name"> Snir Ben Yosef</h1>
 
                   <div id="curjobdiv">
@@ -58,23 +100,78 @@
               </div>
 
           </div>
-          <div class="col-3">
-              <p>test</p>
+          <!-- Some Picture -->
+          <div class="col-md-3 hivediv">
+            <img src="{% static "css/hiveweb.png" %}" alt="..." class="img-responsive hive">
+
+          </div>
+          </div>
+      </div>
+  </div>
+
+      <div id="links" class="">
+      <div id="about-me-links" class="row">
+
+      <div id="contact-info" class="col-md-3">
+          <a href="#">
+             <div class="linksinn">
+                 <div class="row">
+                     <div class="icon-s1">
+                   <span class="iconify" data-icon="simple-line-icons:earphones-alt" data-inline="false"></span>
+                     </div>
+                         <span>Contact Information</span>
+             </div>
+</div>
+
+          </a>
+      </div>
+      <div id="send-msg" class="col">
+               <div class="contacthelp ">
+          <a class="prelink" href="#">
+              <div class="row">
+             <div class="icon-s1">
+<span class="iconify" data-icon="simple-line-icons:envelope-open" data-inline="false"></span>
+                 </div>
+                 <span>Send Message</span>
+             </div>
+
+
+          </a>
+      </div>
+           </div>
+      <div id="download" class="col">
+               <div class="contacthelp">
+          <a class="prelink" href="#">
+             <div class="row">
+                 <div class="icon-s1">
+                 <span class="iconify" data-icon="simple-line-icons:cloud-download" data-inline="false"></span>
+              </div>
+               <span>Download Resume</span>
+             </div>
+
+
+          </a>
+      </div>
+           </div>
+
+
+
+
+
+      </div>
+
+      </div>
+      <div class="row about-info">
+          <div class="col-md-12">
+              <h1 class="abouttitle"> ABOUT ME</h1>
+
 
           </div>
 
-
       </div>
-      <div id="about-me-links">
+</div>
 
 
-
-      </div>
-
-
-
-
-  </div>
  </div>
 </div>
     </div>
@@ -91,4 +188,9 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 </html>

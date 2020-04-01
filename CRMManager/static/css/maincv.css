@@ -1,28 +1,65 @@
 .page-content{
     box-sizing: border-box;
+
+}
+body{
+    font-family: Open Sans,sans-serif;
+
+
 }
 
 div{
     display: block;
 }
-
 #about-me{
     background-image: url('mainimage.jpg');
-
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 50px;
     padding-bottom: 50px;
 
+
+
 }
 .myimage{
     /*position: fixed;*/
     box-sizing: border-box;
-    margin-top: 60px;
-    max-width: 100%;
-    max-height: 130%;
-    position: absolute;
+    max-width: 80%;
+    max-height: 180%;
+    text-align:center;
+    margin: 60px auto;
 
+}
+
+@media all and (min-width:769px) and (max-width: 800px) {
+  .myimage{
+      position: relative;
+  }
+}
+
+@media all and (min-width:569px) and (max-width: 768px) {
+  /* put your css styles in here */
+      .myimage{
+      position: relative;
+  }
+}
+
+@media all and (min-width:481px) and (max-width: 568px) {
+  /* put your css styles in here */
+      .myimage{
+      position: relative;
+  }
+}
+
+
+
+.icon-s1{
+    text-align: center;
+    line-height: 1em;
+    color: #fdd55c;
+    box-sizing:border-box;
+    width: 20%;
+    height: 100%;
 }
 
 #profile {
@@ -39,6 +76,12 @@ div{
     margin-top: 60px!important;
     margin-bottom: 10px!important;
     font-family: Open Sans, sans-serif;
+
+
+}
+.mid{
+margin: 50px;
+
 }
 
 #curjob{
@@ -50,4 +93,179 @@ div{
 
 #curjobdiv{
     margin-bottom: 30px;
+}
+
+#contact-info{
+    text-align: center!important;
+    border-right-width: 1px!important;
+    border-right-color: #e2e2e2!important;
+    border-right-style: solid!important;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+.linksinn{
+    padding: 26px 0 21px 11px!important;
+    text-align: center!important;
+
+}
+.linksinn1{
+    padding: 26px 45px 10px 4px!important;
+    text-align: center!important;
+}
+
+
+#about-me-links{
+    position: relative;
+    margin-left:25%;
+    border-bottom: 1px solid #e2e2e2;
+    z-index: 0
+}
+.prelink{
+        letter-spacing: -.5px;
+        text-decoration: none;
+    border: none;
+    display: block;
+        outline: none!important;
+
+
+
+}
+.contacthelp{
+
+        padding: 26px 0 21px 11px!important;
+
+}
+
+#send-msg{
+    border-right-width: 1px!important;
+    border-right-color: #e2e2e2!important;
+    border-right-style: solid!important;
+    flex: 0 0 25%;
+    max-width: 25%
+}
+
+#download{
+
+    flex: 0 0 30%;
+    max-width: 40%
+}
+
+span{
+    font-size: 17px;
+    color: #2e353e;
+    font-family: Open Sans,sans-serif;
+    text-decoration: none;
+}
+.iconify { width: 24px; height: 24px;
+  text-decoration: none!important;
+}
+
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none!important;;
+}
+
+a .row {
+    text-align: center;
+}
+
+
+
+.float-navbar{
+    overflow: hidden;
+    position: fixed;
+    float:left;
+    width: 100%;
+}
+
+.float-navbar-h1{
+    position:absolute;
+    margin: 0;
+    height: auto!important;
+    box-shadow: 0 0 80px 0 rgba(62,62,62,.3);
+    margin-top: 75px;
+
+}
+
+.nav{
+
+    float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+    position: fixed;
+}
+
+.nav-link{
+    background-color: #fdd55c;
+
+     color:black;
+      text-decoration: none!important;
+
+
+
+
+}
+
+
+.nav-item{
+
+
+     margin: 0 auto;
+      text-decoration: none!important;
+
+
+
+}
+
+.nav{
+    margin-left: 1.6%;
+      text-decoration: none!important;
+
+}
+
+.linkdiv{
+    width: 79.6%;
+
+      text-decoration: none!important;
+}
+
+.row{
+    margin: 0 0 0 0;
+}
+
+div .row{
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    vertical-align: baseline;
+}
+
+.col-md-4{
+    margin: 0;
+    padding: 0;
+}
+
+#links{
+}
+
+.abouttitle{
+    color:#212529;
+    font-size:25px;
+    line-height: 42px;
+    font-weight: 800;
+    font-family: Open Sans,sans-serif;
+    letter-spacing: -.05em;
+}
+
+.hive{
+     object-fit: contain;
 }

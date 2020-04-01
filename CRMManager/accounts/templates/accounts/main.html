@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/js/dropzone/dist/dropzone.css' %}">
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     </head>
 
@@ -28,7 +29,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<script src="{% static '/js/dropzone/dist/dropzone.js' %}"></script>
 <script >
 
 
@@ -172,6 +173,7 @@
                     <td contenteditable="true">${fields["service"]||""}</td>
                     <td contenteditable="true">${fields["quantity"]||""}</td>
                     <td contenteditable="true">${fields["price"]||""} ₪</td>
+                    <td contenteditable="true"></td>
                      <td><input type="submit" class="btn btn-danger justify-content-center text-center" value="מחק"  /></td>
                     </tr>`
                 )
@@ -183,34 +185,6 @@
         })
     })
 
-
-      $("#file-form").submit(function (e) {
-        var data = new FormData($('#file-form').get(0));
-        data.append('id_file',$("#id_file").files[0]);
-        // preventing from page reload and default actions
-        e.preventDefault();
-        // serialize the data for sending the form data.
-        // make POST ajax call
-        $.ajax({
-            type: 'POST',
-            url: "{% url 'post_file' order.id %}",
-            data: {'data' : data},
-            success: function (response) {
-                // on successfull creating object
-                // 1. clear the form.
-                $("#file-form").trigger('reset');
-                // 2. focus to nickname input
-                // splay the newly friend to table.
-                var instance = JSON.parse(response["instance"]);
-                var fields = instance[0]["fields"];
-
-            },
-            error: function (response) {
-                // alert the error if any error occured
-                alert(response["responseJSON"]["error"]);
-            }
-        })
-    })
 
 
     /*
@@ -250,7 +224,20 @@
 
 
 </script>
+  <script>
+            Dropzone.options.myDropzone = {
+                paramName: "imagen", // el nombre de nuestro input
+                autoProcessQueue : true,
+                parallelUploads: 1,
 
+                init: function() {
+                    this.on("success", function(file, responseText) {
+                        // evento lanzado al terminar de subir las imágenes en cola
+                        console.log(responseText);
+                    });
+                }
+            };
+        </script>
 
 </html>
 

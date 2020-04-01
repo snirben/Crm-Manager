@@ -11,6 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views import View
 
 from .models import *
+from django.template import RequestContext as ctx
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -222,27 +223,27 @@ def postTask(request, id):
 
 
 
-def postFile(request, id):
-    # request should be ajax and method should be POST.
-    temp=request.POST.get('data')
-    print(temp)
-    if request.method == "POST":
-        # get the form data
-        form = OrderFileForm(request.POST)
-        print(form)
-        # save the data and after fetch the object in instance
+def upload_files(request,id):
+    print(request.FILES)
+    print(id)
+    order = get_object_or_404(Order, id=id)
+    files = [request.FILES.get('file')]
+    for f in files:
+        print(f)
+        client_upload=OrderFile.objects.create(
+            order=order,
+            file=f,
+        )
+    """if request.method == 'POST':
+        form = OrderFileForm(request.POST, request.FILES)
+
         if form.is_valid():
-            order = get_object_or_404(Order, id=id)
-            instance = form.save(commit=False)
-            instance.order = order
-            instance.save()
-            # serialize in new friend object in json
-            ser_instance = serializers.serialize('json', [instance, ])
-            # send to client side.
-            return JsonResponse({"instance": ser_instance}, status=200)
-        else:
-            # some form errors occured.
-            return JsonResponse({"error": form.errors}, status=400)
+            picture = form.save()
+    else:
+        form = OrderFileForm()
+"""
+    return render(request,"accounts/order_form.html")
+
 
 
 
