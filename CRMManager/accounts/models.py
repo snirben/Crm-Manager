@@ -40,7 +40,7 @@ class Product(models.Model):
 
 class Order(models.Model):
     STATUS = (
-        ('New', 'New'),
+        ('New', 'חדש'),
         ('Work in progress', 'Work in progress'),
         ('completed', 'completed'),
     )
@@ -49,7 +49,7 @@ class Order(models.Model):
     date_finish = models.DateField(null=True, verbose_name='תאריך סיום' ,blank=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS, verbose_name='סטאטוס')
     desc = models.TextField(max_length=255, null=True, verbose_name='פרטים',blank=True)
-
+    paid = models.BooleanField(default=False)
     def date_createdview(self):
         return self.date_created.strftime('%d/%m/%Y')
 
@@ -63,7 +63,8 @@ class ServiceItem(models.Model):
     quantity = models.IntegerField(null=True,verbose_name='כמות')
     price = models.FloatField(verbose_name='מחיר', null=True)
 
-
+    def amount(self):
+       return self.price * self.quantity
 # def __str__(self):
 #    return self.product.name
 
@@ -75,3 +76,15 @@ class OrderTask(models.Model):
 class OrderFile(models.Model):
     order=models.ForeignKey(Order, null=True, on_delete=models.CASCADE)
     file= models.FileField(upload_to='static/files/')
+    uploaded_at = models.DateTimeField(auto_now_add=True,null=True)
+
+    def __str__(self):
+     return self.file.name
+    def date_created(self):
+        return self.uploaded_at.strftime('%d/%m/%Y')
+
+
+class Orderinfo(models.Model):
+      order = models.ForeignKey(Order, null=True, on_delete=models.CASCADE)
+      created_at = models.DateTimeField(auto_now_add=True, null=True)
+      desc = models.TextField(max_length=255, null=True, verbose_name='פרטים', blank=True)

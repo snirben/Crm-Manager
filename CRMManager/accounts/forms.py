@@ -45,6 +45,7 @@ class OrderForm(ModelForm):
         self.fields['date_finish'].required = False
         self.fields['status'].required = False
         self.fields['desc'].required = False
+        self.fields['paid'].required = False
 
     class Meta:
         model = Order
@@ -53,7 +54,13 @@ class OrderForm(ModelForm):
 
 
 
-
+class infoForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(infoForm, self).__init__(*args, **kwargs)
+        self.fields['order'].required = False
+    class Meta:
+        model = Orderinfo
+        fields = '__all__'
 
 
 class TaskForm(ModelForm):

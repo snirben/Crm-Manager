@@ -5,28 +5,32 @@
     <link rel="stylesheet" type="text/css" href="{% static '/css/customer.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Secular+One&display=swap" rel="stylesheet">
 		<br>
-<div class="container">
+<div class="container-fluid">
 <div class="row">
+
 	<div class="col-md">
-		<div class="card card-body" style="background-color: #0383CD ">
+		<div class="card card-body" style="background-color: black ">
 			<h5 class="" align="middle" style="color:white"> הזמנה מספר :{{order.id}} </h5>
             <h5 align="middle" style="color:white">לקוח : {{customer.name}}</h5>
+        <h5 align="middle" style="color:white">  סטאטוס:<span class="badge badge-success" style="width: 10%">חדש</span><span class="badge badge-warning" style="width: 10%">לא שולם</span></h5>
             <form id="myform">
                   {% csrf_token %}
-                {{orderform.date_finish}}
+              <h5 align="middle" style="color:white">תאריך סיום: {{orderform.date_finish}}</h5>
 
             </form>
+
+            <h5 align="middle" style="color:white">  סה"כ:{{total}}₪   </h5>
 
 		</div>
 </div>
 	</div>
-
+<br>
   <div class="row">
 	  <div class="col-4">
 		  <div class="card bg-light mb-3" style="max-width: 30rem;">
-  <div class="card-header " align="center">משימות</div>
+  <div class="card-header " align="center">משימות<span class="badge badge-pill badge-info">{{task.count}}</span> </div>
   <div class="card-body">
-       <form id="task-form">
+       <form id="task-form action="{% url 'post_task' order.id %}">
         <div class="row input-group" >
             {% csrf_token %}
 
@@ -61,18 +65,18 @@
     <div class="card-header" id="headingOne">
       <h2 class="mb-0" align="center">
         <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          שירותים
+          שירותים <span class="badge badge-pill badge-primary">{{service.count}}</span>
         </button>
       </h2>
     </div>
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-          <form id="service-form">
+          <form id="service-form" action="{% url 'post_service' order.id %}">
 
             {% csrf_token %}
 
-               <table class="table table-striped table-sm table-bordered table-hover" id="my_services">
+               <table class="ex_highlight_row table table-striped table-sm table-bordered table-hover" id="my_services">
 
          <thead>
                <tr>
@@ -89,17 +93,20 @@
             <td width="60%">
                    {{formservice.service}}
                </td>
-               <td width="15%">{{formservice.quantity}}</td>
-               <td width="20%">{{formservice.price}}</td>
-               <td width="20%"></td>
+               <td width="14%" class="qu">{{formservice.quantity}}</td>
+               <td width="15%" class="price">{{formservice.price}}</td>
+               <td width="25%"class="total"></td>
             <td><input type="submit" class="btn btn-primary justify-content-center text-center" value="הוסף"  /></td>
         {% for i in service %}
         <tr >
-            <td contenteditable="true">{{i.product}} </td>
+            <td contenteditable="true">{{i.service}} </td>
             <td contenteditable="true">{{i.quantity}} </td>
             <td contenteditable="true">{{i.price}} ₪</td>
-            <td contenteditable="true"></td>
-            <td><input type="submit" class="btn btn-danger justify-content-center text-center" value="מחק"  /></td>
+            <td contenteditable="true">{{i.amount}} ₪</td>
+            <td><form action="{% url 'delete_service'  %}" method="POST">
+    {%csrf_token %}
+    <button type="button"  type="submit"  class="btn btn-outline-danger">מחק</button>
+</form></td>
 
         </tr>
         {% endfor %}
@@ -115,7 +122,7 @@
     <div class="card-header" id="headingTwo" align="center">
       <h2 class="mb-0">
         <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          קבצים
+         קבצים   <span class="badge badge-pill badge-dark">  {{file.count}}  </span>
         </button>
       </h2>
     </div>
@@ -127,8 +134,34 @@
  <div class="fallback">
                 <input name="file" type="file" multiple />
             </div>
-
           </form>
+              <table class="table table-striped table-sm table-bordered table-hover" id="my_files">
+
+         <thead>
+               <tr>
+                   <th width="15%"> תאריך הוספה </th>
+                   <th width="30%">
+                       קובץ
+                   </th>
+                    <th>
+                       הערה
+                   </th>
+                   <th width="10%">  </th>
+               </tr>
+               </thead>
+        <tbody>
+
+        {% for i in file %}
+        <tr >
+            <td>{{i.date_created}} </td>
+            <td>{{i}} </td>
+            <td></td>
+            <td><input type="submit" class="btn btn-danger justify-content-center text-center" value="מחק"  /></td>
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
       </div>
     </div>
   </div>
@@ -142,7 +175,39 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+           <form id="info-form" action="{% url 'order_info' order.id %}">
+
+            {% csrf_token %}
+
+               <table class="table table-striped table-sm table-bordered table-hover" id="my_infos">
+
+         <thead>
+               <tr>
+                   <th>
+                       מידע
+                   </th>
+                   <th>  </th>
+               </tr>
+               </thead>
+        <tbody>
+            <td width="60%">
+                   {{forminfo.desc}}
+               </td>
+            <td><input type="submit" class="btn btn-primary justify-content-center text-center" value="הוסף"  /></td>
+        {% for i in info %}
+        <tr >
+            <td contenteditable="true">{{i.desc}} </td>
+            <td><form action="{% url 'delete_service'  %}" method="POST">
+    {%csrf_token %}
+    <button type="button"  type="submit"  class="btn btn-outline-danger">מחק</button>
+</form></td>
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+          </form>
       </div>
     </div>
   </div>
@@ -150,4 +215,6 @@
   </div>
 </div>
 </div>
+
 {% endblock %}
+

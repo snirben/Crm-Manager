@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CRM</title>
-
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/js/dropzone/dist/dropzone.css' %}">
@@ -30,9 +29,43 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="{% static '/js/dropzone/dist/dropzone.js' %}"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.10.20/sorting/absolute.js"></script>
+
 <script >
 
+$(document).ready( function () {
+    $('#my_services').DataTable({
+         "language": {
+            "lengthMenu": " מראה _MENU_ רשומות בעמוד ",
+            "zeroRecords": "לא נמצאו נתונים",
+            "info": " _PAGE_ מתוך _PAGES_",
+            "infoEmpty": "אין נתונים",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+                "search":         "חיפוש: ",
 
+             "paginate": {
+        "first":      "First",
+        "last":       "Last",
+        "next":       "הבא",
+        "previous":   "קודם"
+    },
+
+        },
+               "autoWidth": false,
+            "lengthChange": true,
+            "pageLength": 5,
+        "lengthMenu": [ 5,10, 25, 50, 75, 100 ],
+         "rowDefs": [
+    {
+        "targets": [ 1 ],
+        "visible": false
+    }
+],
+
+    });
+
+} );
 
   $("#id_date_finish").change(function () {
       var serializedData = $(this).serialize();
@@ -89,6 +122,7 @@
                 // display the newly friend to table.
                 var instance = JSON.parse(response["instance"]);
                 var fields = instance[0]["fields"];
+
                 $("#my_customers tbody").prepend(
                     `<tr>
                     <td>${fields["name"]||""}</td>
@@ -108,7 +142,7 @@
 
 
 
-      if ($('#task-form').length > 0) {
+    //  if ($('#task-form').length > 0) {
           // Exists.
           $("#task-form").submit(function (e) {
               // preventing from page reload and default actions
@@ -120,7 +154,7 @@
               // make POST ajax call
               $.ajax({
                   type: 'POST',
-                  url: "{% url 'post_task' order.id %}",
+                  url: $(this).attr('action'),
                   data: serializedData,
                   success: function (response) {
 
@@ -146,7 +180,7 @@
                   }
               })
           })
-      }
+              //  }
 
      $("#service-form").submit(function (e) {
         // preventing from page reload and default actions
@@ -156,14 +190,16 @@
         // make POST ajax call
         $.ajax({
             type: 'POST',
-            url: "{% url 'post_service' order.id %}",
+            url: $(this).attr('action'),
             data: serializedData,
             success: function (response) {
                 // on successfull creating object
                 // 1. clear the form.
                 $("#service-form").trigger('reset');
                 // 2. focus to nickname input
-                $("#id_name").focus();
+                $("#id_service").focus();
+                var total= $(".total").html(); //saving the total
+                $(".total").html(" ");
 
                 // display the newly friend to table.
                 var instance = JSON.parse(response["instance"]);
@@ -173,7 +209,7 @@
                     <td contenteditable="true">${fields["service"]||""}</td>
                     <td contenteditable="true">${fields["quantity"]||""}</td>
                     <td contenteditable="true">${fields["price"]||""} ₪</td>
-                    <td contenteditable="true"></td>
+                    <td>${total}</td>
                      <td><input type="submit" class="btn btn-danger justify-content-center text-center" value="מחק"  /></td>
                     </tr>`
                 )
@@ -185,7 +221,37 @@
         })
     })
 
-
+   $("#info-form").submit(function (e) {
+        // preventing from page reload and default actions
+        e.preventDefault();
+        // serialize the data for sending the form data.
+        var serializedData = $(this).serialize();
+        // make POST ajax call
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: serializedData,
+            success: function (response) {
+                // on successfull creating object
+                // 1. clear the form.
+                $("#info-form").trigger('reset');
+                // 2. focus to nickname input
+                // display the newly friend to table.
+                var instance = JSON.parse(response["instance"]);
+                var fields = instance[0]["fields"];
+                $("#my_infos tbody").append(
+                    `<tr>
+                    <td contenteditable="true">${fields["desc"]||""}</td>
+                     <td><input type="submit" class="btn btn-danger justify-content-center text-center" value="מחק"  /></td>
+                    </tr>`
+                )
+            },
+            error: function (response) {
+                // alert the error if any error occured
+                alert(response["responseJSON"]["error"]);
+            }
+        })
+    })
 
     /*
     On focus out on input nickname,
@@ -225,10 +291,31 @@
 
 </script>
   <script>
+
+
+    $(".price").change(function() {
+          if (($(".qu").val().length === 0)) {
+              var amount = $("#id_quantity").val() * $("#id_price").val();
+              $(".total").html(amount + "₪");
+          }
+      });
+           $(".qu").change(function(){
+          if(  ($(".price").val().length === 0 )) {
+              var amount= $("#id_quantity").val() *$("#id_price").val() ;
+              $(".total").html(amount + "₪");
+    }
+
+});
+
+
             Dropzone.options.myDropzone = {
-                paramName: "imagen", // el nombre de nuestro input
+                paramName: "file", // el nombre de nuestro input
+                maxFilesize:50,
                 autoProcessQueue : true,
                 parallelUploads: 1,
+                uploadMultiple:true,
+                addRemoveLinks:true,
+
 
                 init: function() {
                     this.on("success", function(file, responseText) {

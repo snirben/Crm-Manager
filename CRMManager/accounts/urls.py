@@ -27,7 +27,11 @@ urlpatterns = [
 
     ##services##
     path('post/ajax/service/<int:id>', views.postService, name="post_service"),
+    path(r'delete_service/', views.deleteService, name="delete_service"),
 
     #file
     path(r'^upload/(?P<id>\d+)/$', views.upload_files, name='upload_picture'),
+
+    #info
+     path(r'^info/(?P<id>\d+)/$', views.order_info, name='order_info'),
 ]

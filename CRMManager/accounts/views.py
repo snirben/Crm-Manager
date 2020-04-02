@@ -145,8 +145,9 @@ def checkCustomerName(request):
 def createOrder(request, pk):
     # order
     customer = Customer.objects.get(id=pk)
-    order = Order(customer=customer, status="New")
-    order.save()
+    #order = Order(customer=customer, status="New")
+    #order.save()
+    order = Order.objects.get(id=171)
 
     orderform = OrderForm(instance=order)
 
@@ -157,11 +158,20 @@ def createOrder(request, pk):
     ##Services
     formservice = ServiceForm()
     service = ServiceItem.objects.filter(order=order)
+    total=0
+    for i in service:
+        amount=i.price * i.quantity
+        total=total+amount
     #files
     formfile=OrderFileForm()
     file=OrderFile.objects.filter(order=order)
+
+    #info
+    forminfo=infoForm()
+    info=Orderinfo.objects.filter(order=order)
+
     # render
-    context = {'order': order, 'customer': customer, "form": form,
+    context = {'info':info,'forminfo':forminfo,'total':total,'order': order, 'customer': customer, "form": form,
                "task": task, 'formservice': formservice, 'service': service, 'orderform': orderform,'formfile':formfile,'file':file}
     return render(request, 'accounts/order_form.html', context)
 
@@ -224,30 +234,36 @@ def postTask(request, id):
 
 
 def upload_files(request,id):
-    print(request.FILES)
-    print(id)
     order = get_object_or_404(Order, id=id)
     files = [request.FILES.get('file')]
     for f in files:
-        print(f)
         client_upload=OrderFile.objects.create(
             order=order,
             file=f,
         )
-    """if request.method == 'POST':
-        form = OrderFileForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            picture = form.save()
-    else:
-        form = OrderFileForm()
-"""
     return render(request,"accounts/order_form.html")
 
 
 
-
-
+def order_info(request,id):
+    print("here")
+ # request should be ajax and method should be POST.
+    if request.method == "POST":
+        # get the form data
+        form = infoForm(request.POST)
+        # save the data and after fetch the object in instance
+        if form.is_valid():
+            order = get_object_or_404(Order, id=id)
+            instance = form.save(commit=False)
+            instance.order = order
+            instance.save()
+            # serialize in new friend object in json
+            ser_instance = serializers.serialize('json', [instance, ])
+            # send to client side.
+            return JsonResponse({"instance": ser_instance}, status=200)
+        else:
+            # some form errors occured.
+            return JsonResponse({"error": form.errors}, status=400)
 
 
 def postService(request, id):
@@ -262,9 +278,19 @@ def postService(request, id):
             instance.order = order
             instance.save()
             # serialize in new friend object in json
-            ser_instance = serializers.serialize('json', [instance, ])
+            ser_instance = serializers.serialize('json', [instance,])
+
             # send to client side.
-            return JsonResponse({"instance": ser_instance}, status=200)
+            return JsonResponse({"instance": ser_instance,}, status=200)
         else:
             # some form errors occured.
             return JsonResponse({"error": form.errors}, status=400)
+
+
+def deleteService(request):
+    service = ServiceItem.objects.get(id=15)
+    if request.method == "POST":
+        service.delete()
+
+    context = {'item': service}
+    return render(request, 'accounts/delete.html', context)
